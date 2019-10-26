@@ -1,0 +1,81 @@
+{
+	"folders": {},
+	"connections": {
+		"microsoft-16c7c720d60-1561318b0a82098c": {
+			"provider": "sqlserver",
+			"driver": "microsoft",
+			"name": "MS SQL Server - Finance",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "1433",
+				"database": "Finance",
+				"url": "jdbc:sqlserver://;serverName=localhost;databaseName=Finance",
+				"type": "dev",
+				"properties": {
+					"trustServerCertificate": "true"
+				},
+				"provider-properties": {
+					"@dbeaver-authentication@": "WINDOWS_INTEGRATED",
+					"@dbeaver-show-all-schemas@": "false"
+				},
+				"handlers": {}
+			}
+		},
+		"microsoft-16ca01ba3e5-17910d64ad2dea29": {
+			"provider": "sqlserver",
+			"driver": "microsoft",
+			"name": "MS SQL Server - Test",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "1433",
+				"database": "Test",
+				"url": "jdbc:sqlserver://;serverName=localhost;databaseName=Test",
+				"type": "dev",
+				"properties": {
+					"trustServerCertificate": "true"
+				},
+				"provider-properties": {
+					"@dbeaver-authentication@": "WINDOWS_INTEGRATED",
+					"@dbeaver-show-all-schemas@": "false"
+				},
+				"handlers": {}
+			}
+		},
+		"microsoft-16db199bd87-4e5eb14ef9501878": {
+			"provider": "sqlserver",
+			"driver": "microsoft",
+			"name": "SQL Server - Finance",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "1433",
+				"database": "Finance",
+				"url": "jdbc:sqlserver://;serverName=localhost;databaseName=Finance",
+				"type": "dev",
+				"properties": {
+					"trustServerCertificate": "true"
+				},
+				"provider-properties": {
+					"@dbeaver-authentication@": "WINDOWS_INTEGRATED",
+					"@dbeaver-show-all-schemas@": "false"
+				},
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false
+		}
+	}
+}

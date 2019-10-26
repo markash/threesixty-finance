@@ -1,0 +1,1 @@
+SELECT * FROM Finance.dbo.TransactionHistoryLog as t

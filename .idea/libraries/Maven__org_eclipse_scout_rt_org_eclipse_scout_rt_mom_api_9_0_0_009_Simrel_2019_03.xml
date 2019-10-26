@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.eclipse.scout.rt:org.eclipse.scout.rt.mom.api:9.0.0.009_Simrel_2019_03">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/scout/rt/org.eclipse.scout.rt.mom.api/9.0.0.009_Simrel_2019_03/org.eclipse.scout.rt.mom.api-9.0.0.009_Simrel_2019_03.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/scout/rt/org.eclipse.scout.rt.mom.api/9.0.0.009_Simrel_2019_03/org.eclipse.scout.rt.mom.api-9.0.0.009_Simrel_2019_03-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/scout/rt/org.eclipse.scout.rt.mom.api/9.0.0.009_Simrel_2019_03/org.eclipse.scout.rt.mom.api-9.0.0.009_Simrel_2019_03-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

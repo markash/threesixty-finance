@@ -1,0 +1,1 @@
+"C:\Program Files\Java\jdk1.8.0_181\bin\keytool.exe" -exportcert -alias tomcat_localhost -storepass delphi18* -keystore localhost_rsa.jks -file localhost_rsa.der

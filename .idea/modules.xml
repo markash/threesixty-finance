@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/helloworld/helloworld.iml" filepath="$PROJECT_DIR$/helloworld/helloworld.iml" />
+      <module fileurl="file://$PROJECT_DIR$/helloworld-root.iml" filepath="$PROJECT_DIR$/helloworld-root.iml" />
+      <module fileurl="file://$PROJECT_DIR$/helloworld.client/helloworld.client.iml" filepath="$PROJECT_DIR$/helloworld.client/helloworld.client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/helloworld.database/helloworld.database.iml" filepath="$PROJECT_DIR$/helloworld.database/helloworld.database.iml" />
+      <module fileurl="file://$PROJECT_DIR$/helloworld.server/helloworld.server.iml" filepath="$PROJECT_DIR$/helloworld.server/helloworld.server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/helloworld.server.app.war/helloworld.server.app.war.iml" filepath="$PROJECT_DIR$/helloworld.server.app.war/helloworld.server.app.war.iml" />
+      <module fileurl="file://$PROJECT_DIR$/helloworld.shared/helloworld.shared.iml" filepath="$PROJECT_DIR$/helloworld.shared/helloworld.shared.iml" />
+      <module fileurl="file://$PROJECT_DIR$/helloworld.ui.html/helloworld.ui.html.iml" filepath="$PROJECT_DIR$/helloworld.ui.html/helloworld.ui.html.iml" />
+      <module fileurl="file://$PROJECT_DIR$/helloworld.ui.html.app.war/helloworld.ui.html.app.war.iml" filepath="$PROJECT_DIR$/helloworld.ui.html.app.war/helloworld.ui.html.app.war.iml" />
+    </modules>
+  </component>
+</project>

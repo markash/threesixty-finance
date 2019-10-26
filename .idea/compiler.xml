@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="helloworld" target="1.8" />
+      <module name="helloworld-root" target="1.5" />
+      <module name="helloworld.client" target="1.8" />
+      <module name="helloworld.database" target="1.8" />
+      <module name="helloworld.server" target="1.8" />
+      <module name="helloworld.server.app.war" target="1.8" />
+      <module name="helloworld.shared" target="1.8" />
+      <module name="helloworld.ui.html" target="1.8" />
+      <module name="helloworld.ui.html.app.war" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

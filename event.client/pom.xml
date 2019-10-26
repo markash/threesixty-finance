@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>com.github.markash.threesixty.financial</groupId>
+		<artifactId>bom</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../bom/pom.xml</relativePath>
+	</parent>
+	
+	<artifactId>event.client</artifactId>
+	<name>Event Client</name>
+	<url>http://maven.apache.org</url>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.scout.rt</groupId>
+			<artifactId>org.eclipse.scout.rt.client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.markash.threesixty.financial</groupId>
+			<artifactId>finance.client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.markash.threesixty.financial</groupId>
+			<artifactId>shared</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.scout.rt</groupId>
+			<artifactId>org.eclipse.scout.rt.client.test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>

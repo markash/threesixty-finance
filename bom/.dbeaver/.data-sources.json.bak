@@ -1,0 +1,95 @@
+{
+	"folders": {},
+	"connections": {
+		"microsoft-16c7c720d60-1561318b0a82098c": {
+			"provider": "sqlserver",
+			"driver": "microsoft",
+			"name": "MS SQL Server - Finance",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "1433",
+				"database": "Finance",
+				"url": "jdbc:sqlserver://;serverName=localhost;databaseName=Finance",
+				"type": "dev",
+				"properties": {
+					"trustServerCertificate": "true"
+				},
+				"provider-properties": {
+					"@dbeaver-authentication@": "WINDOWS_INTEGRATED",
+					"@dbeaver-show-all-schemas@": "false"
+				},
+				"handlers": {
+					"ssh_tunnel": {
+						"type": "TUNNEL",
+						"enabled": false,
+						"save-password": true,
+						"properties": {
+							"sshConnectTimeout": "10000",
+							"port": "22",
+							"keyPath": "",
+							"implementation": "jsch",
+							"host": "",
+							"authType": "PASSWORD"
+						}
+					},
+					"socks_proxy": {
+						"type": "PROXY",
+						"enabled": false,
+						"save-password": true,
+						"properties": {
+							"socks-port": "1080",
+							"socks-host": ""
+						}
+					}
+				}
+			}
+		},
+		"microsoft-16ca01ba3e5-17910d64ad2dea29": {
+			"provider": "sqlserver",
+			"driver": "microsoft",
+			"name": "MS SQL Server - Test",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "1433",
+				"database": "Test",
+				"url": "jdbc:sqlserver://;serverName=localhost;databaseName=Test",
+				"type": "dev",
+				"properties": {
+					"trustServerCertificate": "true"
+				},
+				"provider-properties": {
+					"@dbeaver-authentication@": "WINDOWS_INTEGRATED",
+					"@dbeaver-show-all-schemas@": "false"
+				},
+				"handlers": {
+					"ssh_tunnel": {
+						"type": "TUNNEL",
+						"enabled": false,
+						"save-password": true,
+						"properties": {
+							"sshConnectTimeout": "10000",
+							"port": "22",
+							"keyPath": "",
+							"implementation": "jsch",
+							"host": "",
+							"authType": "PASSWORD"
+						}
+					},
+					"socks_proxy": {
+						"type": "PROXY",
+						"enabled": false,
+						"save-password": true,
+						"properties": {
+							"socks-port": "1080",
+							"socks-host": ""
+						}
+					}
+				}
+			}
+		}
+	}
+}

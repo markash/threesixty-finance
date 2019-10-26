@@ -1,0 +1,1 @@
+docker container run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=delphi18*' --name scout_mssql -p 1433:1433  -it mpashworth/scout-mssql

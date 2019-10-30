@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('') {
+    stage('error') {
       steps {
-        build 'Mvn'
+        sh 'mvn -DskipTests=true clean install'
       }
     }
   }

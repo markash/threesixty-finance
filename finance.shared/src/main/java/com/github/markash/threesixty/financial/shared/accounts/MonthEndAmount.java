@@ -17,7 +17,7 @@ public class MonthEndAmount implements Serializable, Comparable<MonthEndAmount> 
 			final BigDecimal amount) {
 		
 		this.monthEnd = monthEnd;
-		this.amount = new BigDecimal(amount != null ? amount.doubleValue() : 0.00);
+		this.amount = BigDecimal.valueOf(amount != null ? amount.doubleValue() : 0.00);
 	}
 	
 	public MonthEndAmount(
@@ -25,7 +25,7 @@ public class MonthEndAmount implements Serializable, Comparable<MonthEndAmount> 
 			final Long amount) {
 		
 		this.monthEnd = monthEnd;
-		this.amount = new BigDecimal(amount != null ? amount.doubleValue() : 0.00);
+		this.amount = BigDecimal.valueOf(amount != null ? amount.doubleValue() : 0.00);
 	}
 	
 	public MonthEndAmount(
@@ -33,7 +33,7 @@ public class MonthEndAmount implements Serializable, Comparable<MonthEndAmount> 
 			final BigDecimal amount) {
 		
 		this.monthEnd = monthEnd.toLocalDate();
-		this.amount = new BigDecimal(amount != null ? amount.doubleValue() : 0.00);
+		this.amount = BigDecimal.valueOf(amount != null ? amount.doubleValue() : 0.00);
 	}
 	
 	/**

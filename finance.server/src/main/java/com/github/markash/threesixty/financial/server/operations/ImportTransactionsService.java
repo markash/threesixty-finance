@@ -2,6 +2,7 @@ package com.github.markash.threesixty.financial.server.operations;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -80,12 +81,12 @@ public class ImportTransactionsService implements IImportTransactionsService {
                         row.getBalance());   
             }
                           
-            SQLServerPreparedStatement pStmt = (SQLServerPreparedStatement) connection.prepareStatement(SQLs.TransactionHistory.IMPORT);
-            pStmt.setStructured(1, "dbo.TransactionHistoryType", transactions);  
-            pStmt.execute();
-            
-            connection.commit();
-            
+            try (SQLServerPreparedStatement pStmt = (SQLServerPreparedStatement) connection.prepareStatement(SQLs.TransactionHistory.IMPORT)) {
+                pStmt.setStructured(1, "dbo.TransactionHistoryType", transactions);  
+                pStmt.execute();
+                
+                connection.commit();
+            }
         } catch (Exception e) {
             throw new DatabaseException("Database call to dbo.prTransactionHistoryImport failed", e);
         }
@@ -95,11 +96,12 @@ public class ImportTransactionsService implements IImportTransactionsService {
     
         try {
           
-            BEANS.get(ISqlService.class)
-                .getConnection()
-                .prepareStatement(SQLs.TransactionHistory.FULL_TEXT_UPDATE)
-                .execute();
+            Connection connection = BEANS.get(ISqlService.class).getConnection();
             
+            try (PreparedStatement pStmt = connection.prepareStatement(SQLs.TransactionHistory.FULL_TEXT_UPDATE)) {
+             
+                pStmt.execute();
+            }
         } catch (Exception e) {
             throw new DatabaseException("Database call to update transaction history full index failed", e);
         }
@@ -112,12 +114,12 @@ public class ImportTransactionsService implements IImportTransactionsService {
     public void deleteDuplicateTransactionHistory() throws DatabaseException {
         
         try {
+            Connection connection = BEANS.get(ISqlService.class).getConnection();
             
-            BEANS.get(ISqlService.class)
-                .getConnection()
-                .prepareStatement(SQLs.TransactionHistory.DELETE_DUPLICATES)
-                .execute();
-            
+            try (PreparedStatement pStmt = connection.prepareStatement(SQLs.TransactionHistory.DELETE_DUPLICATES)) {
+                
+                pStmt.execute();
+            }
         } catch (Exception e) {
             throw new DatabaseException("Database call to delete the duplicate transaction history items failed.", e);
         }
@@ -130,12 +132,12 @@ public class ImportTransactionsService implements IImportTransactionsService {
     public void autoAllocateTransactionHistory() throws DatabaseException {
         
         try {
+            Connection connection = BEANS.get(ISqlService.class).getConnection();
             
-            BEANS.get(ISqlService.class)
-                .getConnection()
-                .prepareStatement(SQLs.TransactionHistory.AUTO_ALLOCATE)
-                .execute();
-            
+            try (PreparedStatement pStmt = connection.prepareStatement(SQLs.TransactionHistory.AUTO_ALLOCATE)) {
+                
+                pStmt.execute();
+            }
         } catch (Exception e) {
             throw new DatabaseException("Database call to auto allocate the transaction history.", e);
         }
@@ -184,12 +186,14 @@ public class ImportTransactionsService implements IImportTransactionsService {
                         allocation.getComment());   
             }
             
-            SQLServerPreparedStatement pStmt = (SQLServerPreparedStatement) connection.prepareStatement(SQLs.TransactionHistory.MANUAL_ALLOCATE);
-            pStmt.setLong(1, transactionId);
-            pStmt.setStructured(2, "dbo.AllocationType", allocationTable);  
-            pStmt.execute();
-                        
-            connection.commit();
+            try (SQLServerPreparedStatement pStmt = (SQLServerPreparedStatement) connection.prepareStatement(SQLs.TransactionHistory.MANUAL_ALLOCATE)) {
+                
+                pStmt.setLong(1, transactionId);
+                pStmt.setStructured(2, "dbo.AllocationType", allocationTable);  
+                pStmt.execute();
+                            
+                connection.commit();
+            }
             
         } catch (SQLException e) {
             

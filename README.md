@@ -1,4 +1,6 @@
 # ThreeSixty Finance
+[![Build Status](https://travis-ci.org/markash/threesixty-finance.svg?branch=master)](https://travis-ci.org/markash/threesixty-finance)
+
 [![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=threesixty-finance&metric=alert_status)](https://sonarcloud.io/dashboard?id=threesixty-finance)
  
 ## Tomcat Deployment 

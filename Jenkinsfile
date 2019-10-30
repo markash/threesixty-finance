@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Verify') {
       steps {
-        bat(script: 'mvn verify sonar:sonar -DskipTests=true -Dsonar.projectKey=threesixty-finance -Dsonar.organization=markash-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=13a2641b2801291cbda4bc4d1e10b531fa726e29', label: 'SonarQube', returnStdout: true)
+        bat(script: 'mvn verify sonar:sonar -Dsonar.projectKey=threesixty-finance -Dsonar.organization=markash-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=13a2641b2801291cbda4bc4d1e10b531fa726e29', label: 'SonarQube', returnStdout: true)
       }
     }
   }

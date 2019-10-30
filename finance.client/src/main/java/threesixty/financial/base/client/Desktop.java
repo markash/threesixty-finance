@@ -30,6 +30,7 @@ import com.github.markash.threesixty.financial.client.finance.FinanceOutline;
 import com.github.markash.threesixty.financial.client.operations.OperationsOutline;
 import com.github.markash.threesixty.financial.shared.Icons;
 import com.github.markash.threesixty.financial.shared.operations.IImportTransactionsService;
+import com.github.markash.threesixty.financial.shared.operations.ImportTransactionLineParser;
 
 import threesixty.financial.base.client.Desktop.UserProfileMenu.ThemeMenu.DarkThemeMenu;
 import threesixty.financial.base.client.Desktop.UserProfileMenu.ThemeMenu.DefaultThemeMenu;
@@ -141,7 +142,7 @@ public class Desktop extends AbstractDesktop {
                 try {
                     for (BinaryResource file : files) {
 
-                        service.importFile(file);
+                        service.importFile(new ImportTransactionLineParser().apply(file));
                     }
                 } catch (Exception e) {
                     new MessageBox().withHeader("Import error").withBody(e.getMessage()).withSeverity(IStatus.ERROR)

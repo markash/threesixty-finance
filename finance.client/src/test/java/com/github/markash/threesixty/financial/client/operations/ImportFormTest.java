@@ -5,7 +5,9 @@ import org.eclipse.scout.rt.testing.client.runner.ClientTestRunner;
 import org.eclipse.scout.rt.testing.client.runner.RunWithClientSession;
 import org.eclipse.scout.rt.testing.platform.mock.BeanMock;
 import org.eclipse.scout.rt.testing.platform.runner.RunWithSubject;
+import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
@@ -19,16 +21,23 @@ import com.github.markash.threesixty.financial.shared.operations.ImportFormData;
 public class ImportFormTest {
 
   @BeanMock
-  private IImportService m_mockSvc;
+  private IImportService mockSvc;
 
   @Before
   public void setup() {
     ImportFormData answer = new ImportFormData();
-    Mockito.when(m_mockSvc.prepareCreate(ArgumentMatchers.any())).thenReturn(answer);
-    Mockito.when(m_mockSvc.create(ArgumentMatchers.any())).thenReturn(answer);
-    Mockito.when(m_mockSvc.load(ArgumentMatchers.any())).thenReturn(answer);
-    Mockito.when(m_mockSvc.store(ArgumentMatchers.any())).thenReturn(answer);
+    Mockito.when(mockSvc.prepareCreate(ArgumentMatchers.any())).thenReturn(answer);
+    Mockito.when(mockSvc.create(ArgumentMatchers.any())).thenReturn(answer);
+    Mockito.when(mockSvc.load(ArgumentMatchers.any())).thenReturn(answer);
+    Mockito.when(mockSvc.store(ArgumentMatchers.any())).thenReturn(answer);
   }
 
-  // TODO [mpash] add test cases
+  @Test
+  public void loadAccountData() {
+      
+      ImportFormData formData = new ImportFormData();
+      mockSvc.load(formData);
+      
+      Assert.assertNotNull(formData);
+  }
 }

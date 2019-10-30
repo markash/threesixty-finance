@@ -4,7 +4,6 @@ import threesixty.financial.base.client.dashboard.AbstractDashboardTile;
 
 public class AccountDashboardTile extends AbstractDashboardTile {
     
-    private boolean htmlEnabled = true;
     
     public AccountDashboardTile(
             final String group) {

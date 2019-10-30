@@ -118,7 +118,7 @@ public class AccountsService implements IAccountsService {
         if (!ACCESS.check(new ReadAccountPermission())) {
             throw new VetoException(TEXTS.get("AuthorizationFailed"));
         }
-        // TODO [mpash] add business logic here.
+
         return formData;
     }
 

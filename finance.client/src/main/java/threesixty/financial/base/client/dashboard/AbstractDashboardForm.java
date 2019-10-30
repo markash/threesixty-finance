@@ -29,13 +29,6 @@ public abstract class AbstractDashboardForm<T extends FlexboxLayoutData> extends
         return 1;
     }
 
-    private String getViewTitle() {
-        
-        //DisplayViewId viewId = 
-        //        DisplayViewIdLookupCall.getViewId(AbstractDashboardForm.this.getDisplayViewId());
-        return "View ";
-    }
-
     protected abstract T getLayoutDataForUpdate();
 
     protected abstract void storeLayoutData(T layoutData);

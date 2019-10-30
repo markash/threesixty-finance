@@ -1,5 +1,6 @@
 package com.github.markash.threesixty.financial.server.database;
 
+import org.eclipse.scout.rt.platform.config.CONFIG;
 import org.eclipse.scout.rt.platform.config.ConfigUtility;
 import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.TunnelToServer;
@@ -8,6 +9,7 @@ import org.flywaydb.core.api.FlywayException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.github.markash.threesixty.financial.shared.database.DatabaseMigrationConfigProperties;
 import com.github.markash.threesixty.financial.shared.database.IDatabaseMigrationService;
 
 /**
@@ -41,6 +43,13 @@ public class DatabaseMigrationService implements IDatabaseMigrationService {
     
     private void migrate(
             final Flyway flyway) {
+        
+        final boolean migrate = CONFIG.getPropertyValue(DatabaseMigrationConfigProperties.MigrateProperty.class);
+        
+        if (Boolean.FALSE.equals(migrate)) {
+            log.info("Database migration set to false.");
+            return;
+        }
         
         log.info("Migrating database to the next version.");
         

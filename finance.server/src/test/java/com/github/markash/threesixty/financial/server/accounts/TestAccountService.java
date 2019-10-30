@@ -15,13 +15,14 @@ import com.github.markash.threesixty.financial.shared.finance.IAccountService;
 @RunWithSubject("anonymous")
 @RunWith(ServerTestRunner.class)
 @RunWithServerSession(ServerSession.class)
-public class AccountsServiceTest {
+public class TestAccountService {
 
     @Test
-	public void testNothing() {
-	
+    public void accountsFormDataLoad() {
+        
         AccountsFormData formData = new AccountsFormData();
         BEANS.get(IAccountService.class).load(formData);
+        
         Assert.assertNotNull(formData.getMessage().getValue());
-	}
+    }
 }

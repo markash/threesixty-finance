@@ -13,7 +13,8 @@ public class AccountService implements IAccountService {
 
 	@Override
 	public AccountsFormData load(AccountsFormData input) {
-		StringBuilder msg = new StringBuilder();
+		
+	    StringBuilder msg = new StringBuilder();
 		msg.append("Hello ").append(ServerSession.get().getUserId()).append('!');
 		input.getMessage().setValue(msg.toString());
 		return input;

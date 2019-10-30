@@ -27,6 +27,8 @@ import com.github.markash.threesixty.financial.client.operations.ImportTransacti
 import com.github.markash.threesixty.financial.shared.Icons;
 import com.github.markash.threesixty.financial.shared.database.DatabaseException;
 import com.github.markash.threesixty.financial.shared.operations.IImportTransactionsService;
+import com.github.markash.threesixty.financial.shared.operations.ImportTransactionLine;
+import com.github.markash.threesixty.financial.shared.operations.ImportTransactionLineParser;
 import com.github.markash.threesixty.financial.shared.operations.ImportTransactionsTablePageData;
 
 @Data(ImportTransactionsTablePageData.class)
@@ -232,7 +234,10 @@ public class ImportTransactionsTablePage extends AbstractPageWithTable<Table> {
             try {
 
                 if (files.size() > 0) {
-                    BEANS.get(IImportTransactionsService.class).importFile(files.get(0));
+                    
+                    List<ImportTransactionLine> lines = new ImportTransactionLineParser().apply(files.get(0));
+                    
+                    BEANS.get(IImportTransactionsService.class).importFile(lines);
 
                     new MessageBox()
                         .withHeader("Import information")

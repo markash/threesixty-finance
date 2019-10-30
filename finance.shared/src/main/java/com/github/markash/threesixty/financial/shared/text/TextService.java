@@ -11,11 +11,14 @@ public class TextService {
     
     private static final String AUTHORIZATION_FAILED = "AuthorizationFailed";
     
+    private TextService() {
+    }
+    
     /**
      * Authorization failed text
      * @return The text
      */
-    public static final String AUTHORIZATION_FAILED() {
+    public static final String authorizationFailed() {
         
         return TEXTS.get(AUTHORIZATION_FAILED);
     }

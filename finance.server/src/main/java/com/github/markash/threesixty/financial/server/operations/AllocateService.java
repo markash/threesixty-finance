@@ -27,7 +27,7 @@ public class AllocateService implements IAllocateService {
             final AllocateFormData formData) {
         
         if (!ACCESS.check(new ReadAllocatePermission())) {
-            throw new VetoException(TextService.AUTHORIZATION_FAILED());
+            throw new VetoException(TextService.authorizationFailed());
         }
         
         return formData;
@@ -38,7 +38,7 @@ public class AllocateService implements IAllocateService {
             final AllocateFormData formData) {
         
         if (!ACCESS.check(new UpdateAllocatePermission())) {
-            throw new VetoException(TextService.AUTHORIZATION_FAILED());
+            throw new VetoException(TextService.authorizationFailed());
         }
             
         List<Allocation> allocations = new ArrayList<>();

@@ -112,12 +112,13 @@ public class BudgetService implements IBudgetService {
                         );   
             }
                           
-            SQLServerPreparedStatement pStmt = (SQLServerPreparedStatement) connection.prepareStatement(SQLs.BudgetItem.BUDGET_ITEM_PROCESS);
-            pStmt.setStructured(1, "dbo.BudgetItemType", budgetItems);  
-            pStmt.execute();
-            
-            connection.commit();
-            
+            try (SQLServerPreparedStatement pStmt = (SQLServerPreparedStatement) connection.prepareStatement(SQLs.BudgetItem.BUDGET_ITEM_PROCESS)) {
+                
+                pStmt.setStructured(1, "dbo.BudgetItemType", budgetItems);  
+                pStmt.execute();
+                
+                connection.commit();
+            }
         } catch (Exception e) {
             throw new ProcessingException("Database call to " + SQLs.BudgetItem.BUDGET_ITEM_PROCESS + " failed", e);
         }

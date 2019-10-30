@@ -19,11 +19,14 @@ import org.eclipse.scout.rt.platform.service.IService;
 import org.eclipse.scout.rt.server.jdbc.ISelectStreamHandler;
 import org.eclipse.scout.rt.server.jdbc.ISqlService;
 import org.eclipse.scout.rt.server.jdbc.SqlBind;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.github.markash.threesixty.financial.shared.accounts.Account;
 import com.github.markash.threesixty.financial.shared.accounts.AccountMonthEndSummary;
 
 public class AccountRepository implements IAccountRepository, IService {
+	private Logger log = LoggerFactory.getLogger(getClass());
 	
 	private ISqlService getSQLService() {
 		
@@ -62,7 +65,7 @@ public class AccountRepository implements IAccountRepository, IService {
 								
 								accounts.add(account);
 							} catch (SQLException e) {
-								e.printStackTrace();
+							    log.error("Unable to retrieve accounts", e);
 							}
 						}
 						

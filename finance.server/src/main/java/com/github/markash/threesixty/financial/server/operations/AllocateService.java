@@ -8,19 +8,17 @@ import java.util.Objects;
 
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.VetoException;
-import org.eclipse.scout.rt.platform.text.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 
 import com.github.markash.threesixty.financial.shared.database.DatabaseException;
 import com.github.markash.threesixty.financial.shared.operations.AllocateFormData;
 import com.github.markash.threesixty.financial.shared.operations.AllocateFormData.AllocationTable.AllocationTableRowData;
 import com.github.markash.threesixty.financial.shared.operations.Allocation;
-import com.github.markash.threesixty.financial.shared.operations.CreateAllocatePermission;
 import com.github.markash.threesixty.financial.shared.operations.IAllocateService;
 import com.github.markash.threesixty.financial.shared.operations.IImportTransactionsService;
 import com.github.markash.threesixty.financial.shared.operations.ReadAllocatePermission;
 import com.github.markash.threesixty.financial.shared.operations.UpdateAllocatePermission;
-import com.github.markash.threesixty.financial.shared.text.TextKey;
+import com.github.markash.threesixty.financial.shared.text.TextService;
 
 public class AllocateService implements IAllocateService {
 
@@ -29,7 +27,7 @@ public class AllocateService implements IAllocateService {
             final AllocateFormData formData) {
         
         if (!ACCESS.check(new ReadAllocatePermission())) {
-            throw new VetoException(TEXTS.get(TextKey.Authorization.AuthorizationFailed));
+            throw new VetoException(TextService.AUTHORIZATION_FAILED());
         }
         
         return formData;
@@ -40,7 +38,7 @@ public class AllocateService implements IAllocateService {
             final AllocateFormData formData) {
         
         if (!ACCESS.check(new UpdateAllocatePermission())) {
-            throw new VetoException(TEXTS.get(TextKey.Authorization.AuthorizationFailed));
+            throw new VetoException(TextService.AUTHORIZATION_FAILED());
         }
             
         List<Allocation> allocations = new ArrayList<>();

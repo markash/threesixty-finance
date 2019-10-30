@@ -1,4 +1,6 @@
 # ThreeSixty Finance
+[![Quality Gate](https://sonarcloud.io/api/badges/gate?key=threesixty-finance:qualinsight-plugins-sonarqube-badges)](https://sonarcloud.io/dashboard/index/threesixty-finance:qualinsight-plugins-sonarqube-badges)
+
  
 ## Tomcat Deployment 
 ### How to create developer certificates

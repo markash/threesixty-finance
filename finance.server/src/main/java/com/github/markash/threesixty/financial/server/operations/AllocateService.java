@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.VetoException;
@@ -12,43 +13,23 @@ import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 
 import com.github.markash.threesixty.financial.shared.database.DatabaseException;
 import com.github.markash.threesixty.financial.shared.operations.AllocateFormData;
+import com.github.markash.threesixty.financial.shared.operations.AllocateFormData.AllocationTable.AllocationTableRowData;
 import com.github.markash.threesixty.financial.shared.operations.Allocation;
 import com.github.markash.threesixty.financial.shared.operations.CreateAllocatePermission;
 import com.github.markash.threesixty.financial.shared.operations.IAllocateService;
 import com.github.markash.threesixty.financial.shared.operations.IImportTransactionsService;
 import com.github.markash.threesixty.financial.shared.operations.ReadAllocatePermission;
 import com.github.markash.threesixty.financial.shared.operations.UpdateAllocatePermission;
+import com.github.markash.threesixty.financial.shared.text.TextKey;
 
 public class AllocateService implements IAllocateService {
-
-    @Override
-    public AllocateFormData prepareCreate(
-            final AllocateFormData formData) {
-        
-        if (!ACCESS.check(new CreateAllocatePermission())) {
-            throw new VetoException(TEXTS.get("AuthorizationFailed"));
-        }
-        
-        return formData;
-    }
-
-    @Override
-    public AllocateFormData create(
-            final AllocateFormData formData) {
-        
-        if (!ACCESS.check(new CreateAllocatePermission())) {
-            throw new VetoException(TEXTS.get("AuthorizationFailed"));
-        }
-        
-        return formData;
-    }
 
     @Override
     public AllocateFormData load(
             final AllocateFormData formData) {
         
         if (!ACCESS.check(new ReadAllocatePermission())) {
-            throw new VetoException(TEXTS.get("AuthorizationFailed"));
+            throw new VetoException(TEXTS.get(TextKey.Authorization.AuthorizationFailed));
         }
         
         return formData;
@@ -59,12 +40,12 @@ public class AllocateService implements IAllocateService {
             final AllocateFormData formData) {
         
         if (!ACCESS.check(new UpdateAllocatePermission())) {
-            throw new VetoException(TEXTS.get("AuthorizationFailed"));
+            throw new VetoException(TEXTS.get(TextKey.Authorization.AuthorizationFailed));
         }
             
         List<Allocation> allocations = new ArrayList<>();
         
-        if (!formData.getSplit().getValue()) {
+        if (Boolean.FALSE.equals(formData.getSplit().getValue())) {
             
             Allocation allocation = new Allocation ( 
                     formData.getAccount().getValue(),
@@ -76,8 +57,8 @@ public class AllocateService implements IAllocateService {
         } else {
         
             BigDecimal allocated = Arrays.stream(formData.getAllocationTable().getRows())
-                    .map(row -> row.getAmount())
-                    .filter(v -> v != null)
+                    .map(AllocationTableRowData::getAmount)
+                    .filter(Objects::nonNull)
                     .reduce(BigDecimal.ZERO, (i, v) -> i.add(v));
             
             int comparison = allocated.compareTo(formData.getAmount().getValue());

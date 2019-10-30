@@ -26,25 +26,25 @@ import com.github.markash.threesixty.financial.server.security.SimpleCredentialV
  */
 public class ServerServletFilter implements Filter {
 
-	private TrivialAccessController m_trivialAccessController;
-	private ServiceTunnelAccessTokenAccessController m_tunnelAccessController;
-	private FormBasedAccessController m_formAccessController;
-	private DevelopmentAccessController m_developmentAccessController;
+	private TrivialAccessController trivialAccessController;
+	private ServiceTunnelAccessTokenAccessController tunnelAccessController;
+	private FormBasedAccessController formAccessController;
+	private DevelopmentAccessController developmentAccessController;
 
 	@Override
 	public void init(
 	        final FilterConfig filterConfig) throws ServletException {
 		
-	    m_trivialAccessController = 
+	    trivialAccessController = 
 	            BEANS.get(TrivialAccessController.class)
 				    .init(
 				            new TrivialAuthConfig()
 				                .withExclusionFilter(filterConfig.getInitParameter("filter-exclude")));
 	    
-		m_tunnelAccessController = BEANS.get(ServiceTunnelAccessTokenAccessController.class).init();
+		tunnelAccessController = BEANS.get(ServiceTunnelAccessTokenAccessController.class).init();
 		
 		
-		m_formAccessController = 
+		formAccessController = 
 		        BEANS.get(FormBasedAccessController.class)
 		            .init(
 		                    new FormBasedAccessController.FormBasedAuthConfig()
@@ -52,7 +52,7 @@ public class ServerServletFilter implements Filter {
 		                        .withEnabled(true));
 		
 		
-		m_developmentAccessController = BEANS.get(DevelopmentAccessController.class).init();
+		developmentAccessController = BEANS.get(DevelopmentAccessController.class).init();
 	}
 
 	@Override
@@ -61,19 +61,19 @@ public class ServerServletFilter implements Filter {
 		final HttpServletRequest req = (HttpServletRequest) request;
 		final HttpServletResponse resp = (HttpServletResponse) response;
 
-		if (m_trivialAccessController.handle(req, resp, chain)) {
+		if (trivialAccessController.handle(req, resp, chain)) {
 			return;
 		}
 
-		if (m_tunnelAccessController.handle(req, resp, chain)) {
+		if (tunnelAccessController.handle(req, resp, chain)) {
 			return;
 		}
 
-		if (m_formAccessController.handle(req, resp, chain)) {
+		if (formAccessController.handle(req, resp, chain)) {
             return;
         }
 		
-		if (m_developmentAccessController.handle(req, resp, chain)) {
+		if (developmentAccessController.handle(req, resp, chain)) {
 			return;
 		}
 
@@ -82,9 +82,9 @@ public class ServerServletFilter implements Filter {
 
 	@Override
 	public void destroy() {
-	    m_formAccessController.destroy();
-		m_developmentAccessController.destroy();
-		m_tunnelAccessController.destroy();
-		m_trivialAccessController.destroy();
+	    formAccessController.destroy();
+		developmentAccessController.destroy();
+		tunnelAccessController.destroy();
+		trivialAccessController.destroy();
 	}
 }

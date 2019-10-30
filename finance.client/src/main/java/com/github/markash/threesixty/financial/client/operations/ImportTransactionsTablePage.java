@@ -65,7 +65,7 @@ public class ImportTransactionsTablePage extends AbstractPageWithTable<Table> {
             
             
             
-            form.startModify();
+            form.startAllocate();
             
             reloadPage("Transaction allocated.");
         }

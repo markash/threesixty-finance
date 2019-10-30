@@ -59,9 +59,10 @@ public class Desktop extends AbstractDesktop {
 		return Icons.AppLogo;
 	}
 
+	@Override
 	protected boolean getConfiguredDense() {
 	    return true;
-	};
+	}
 	
 	@Override
 	protected List<Class<? extends IOutline>> getConfiguredOutlines() {

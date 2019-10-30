@@ -3,7 +3,6 @@ package com.github.markash.threesixty.financial.server.accounts;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.rt.platform.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupRow;
 import org.eclipse.scout.rt.shared.services.lookup.LocalLookupCall;
 import org.eclipse.scout.rt.shared.services.lookup.LookupRow;
@@ -15,8 +14,9 @@ public class AccountLookupCall extends LocalLookupCall<Long> {
     private static final long serialVersionUID = 1L;
    
     @Override
-    protected List<ILookupRow<Long>> execCreateLookupRows() throws ProcessingException {
-      List<ILookupRow<Long>> rows = new ArrayList<ILookupRow<Long>>();
+    protected List<ILookupRow<Long>> execCreateLookupRows() {
+        
+      List<ILookupRow<Long>> rows = new ArrayList<>();
       rows.add(createLookupRow(1L, "Test", 2L, "Blah"));
       rows.add(createLookupRow(2L, "Blah", 3L, "Me"));
       
@@ -35,11 +35,6 @@ public class AccountLookupCall extends LocalLookupCall<Long> {
       data.setAccountName(accountName);
       data.setAccountParentName(accountParentName);
       
-      LookupRow<Long> row = new LookupRow<Long>(accountId, accountName);
-      
-      
-      //row.set (data);
-      
-      return row;
+      return new LookupRow<>(accountId, accountName);
     }
  }

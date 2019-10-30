@@ -39,7 +39,6 @@ import com.github.markash.threesixty.financial.client.operations.AllocateForm.Ma
 import com.github.markash.threesixty.financial.client.operations.AllocateForm.MainBox.TransactionIdField;
 import com.github.markash.threesixty.financial.shared.accounts.AccountLookupCall;
 import com.github.markash.threesixty.financial.shared.operations.AllocateFormData;
-import com.github.markash.threesixty.financial.shared.operations.CreateAllocatePermission;
 import com.github.markash.threesixty.financial.shared.operations.IAllocateService;
 import com.github.markash.threesixty.financial.shared.operations.UpdateAllocatePermission;
 
@@ -60,12 +59,8 @@ public class AllocateForm extends AbstractForm {
         return TEXTS.get("Allocate");
     }
 
-    public void startModify() {
-        startInternalExclusive(new ModifyHandler());
-    }
-
-    public void startNew() {
-        startInternal(new NewHandler());
+    public void startAllocate() {
+        startInternalExclusive(new AllocateHandler());
     }
 
     public CancelButton getCancelButton() {
@@ -374,7 +369,7 @@ public class AllocateForm extends AbstractForm {
         }
     }
 
-    public class ModifyHandler extends AbstractFormHandler {
+    public class AllocateHandler extends AbstractFormHandler {
 
         @Override
         protected void execLoad() {
@@ -393,28 +388,6 @@ public class AllocateForm extends AbstractForm {
             AllocateFormData formData = new AllocateFormData();
             exportFormData(formData);
             service.store(formData);
-        }
-    }
-
-    public class NewHandler extends AbstractFormHandler {
-
-        @Override
-        protected void execLoad() {
-            IAllocateService service = BEANS.get(IAllocateService.class);
-            AllocateFormData formData = new AllocateFormData();
-            exportFormData(formData);
-            formData = service.prepareCreate(formData);
-            importFormData(formData);
-
-            setEnabledPermission(new CreateAllocatePermission());
-        }
-
-        @Override
-        protected void execStore() {
-            IAllocateService service = BEANS.get(IAllocateService.class);
-            AllocateFormData formData = new AllocateFormData();
-            exportFormData(formData);
-            service.create(formData);
         }
     }
 }

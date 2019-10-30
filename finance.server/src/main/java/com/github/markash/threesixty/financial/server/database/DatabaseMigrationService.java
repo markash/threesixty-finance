@@ -16,7 +16,7 @@ import com.github.markash.threesixty.financial.shared.database.IDatabaseMigratio
  */
 @TunnelToServer
 public class DatabaseMigrationService implements IDatabaseMigrationService {
-    private final Logger LOG = LoggerFactory.getLogger(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
     
     @Override
     public void migrate() {
@@ -26,7 +26,7 @@ public class DatabaseMigrationService implements IDatabaseMigrationService {
     }
 
     private Flyway configure() {
-        LOG.info("Configuring database migration.");
+        log.info("Configuring database migration.");
         
         try {
             
@@ -42,7 +42,7 @@ public class DatabaseMigrationService implements IDatabaseMigrationService {
     private void migrate(
             final Flyway flyway) {
         
-        LOG.info("Migrating database to the next version.");
+        log.info("Migrating database to the next version.");
         
         try {
             /* Attempt the migration of the database */

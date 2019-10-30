@@ -32,10 +32,6 @@ import com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement;
 
 public class ImportTransactionsService implements IImportTransactionsService {
 
-//    private ITransactionHistoryRepository getImportTransactionRepository() {
-//        return BEANS.get(ITransactionHistoryRepository.class);
-//    }
-    
     /**
      * Imports the transactions binary resource
      * 
@@ -59,52 +55,6 @@ public class ImportTransactionsService implements IImportTransactionsService {
             throw new ImportTransactionsException("Unable to import transactions from file", e);
         }
     }
-
-    
-//    public List<TransactionHistory> getTransactionHistory() {
-//        
-//        List<TransactionHistory> transactions = new ArrayList<>();
-//        
-//        BEANS.get(ISqlService.class)
-//            .selectStreaming(
-//                    SQLs.TransactionHistory.SELECT, 
-//                    new ISelectStreamHandler() {
-//                        
-//                        @Override
-//                        public void handleRow(
-//                                final Connection con, 
-//                                final PreparedStatement stm, 
-//                                final ResultSet rs, 
-//                                final int rowIndex, 
-//                                final List<SqlBind> values) {
-//                            
-//                            try {
-//                                TransactionHistory transaction = 
-//                                        new TransactionHistory(
-//                                                rs.getLong(TransactionHistory.COL_ID),
-//                                                rs.getDate(TransactionHistory.COL_DATE),
-//                                                rs.getString(TransactionHistory.COL_DESCRIPTION),
-//                                                rs.getBigDecimal(TransactionHistory.COL_AMOUNT),
-//                                                rs.getBigDecimal(TransactionHistory.COL_BALANCE)
-//                                                );
-//                                
-//                                transactions.add(transaction);
-//                            } catch (SQLException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-//                        
-//                        @Override
-//                        public void finished(
-//                                final Connection con, 
-//                                final PreparedStatement stm, 
-//                                final ResultSet rs, 
-//                                final int rowCount) {
-//                        }
-//                    });
-//        
-//        return transactions;
-//    }
 
     public void importTransactionHistory(
             List<ImportTransactionLine> rows) throws DatabaseException {

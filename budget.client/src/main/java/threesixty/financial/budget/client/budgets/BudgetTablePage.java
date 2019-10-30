@@ -70,11 +70,9 @@ public class BudgetTablePage extends AbstractPageWithTable<Table> {
         protected void execDecorateRow(
                 final ITableRow row) {
             
-            if (row.getChildRows().size() > 0) {
-                row.setEnabled(false);
-            } else {
-                row.setEnabled(true);
-            }
+            // Enable the row when it has no child nodes, 
+            // i.e. enable the detail nodes and not the summary nodes
+            row.setEnabled(row.getChildRows().isEmpty());
         }
         
         public BudgetIdColumn getBudgetIdColumn() {

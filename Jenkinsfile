@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('error') {
       steps {
-        sh 'mvn -DskipTests=true clean install'
+        bat(script: 'mvn -DskipTests=true clean install', label: 'Maven', returnStdout: true)
       }
     }
   }

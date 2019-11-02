@@ -10,13 +10,13 @@ public class EventNodePage extends AbstractPageWithNodes {
 
     @Override
     protected String getConfiguredTitle() {
-        // TODO [mpash] verify translation
-        return TEXTS.get("EventNodePage");
+        return TEXTS.get("Event");
     }
 
     @Override
-    protected void execCreateChildPages(List<IPage<?>> pageList) {
-        // TODO [mpash] Auto-generated method stub.
+    protected void execCreateChildPages(
+            final List<IPage<?>> pageList) {
+
         super.execCreateChildPages(pageList);
     }
 }

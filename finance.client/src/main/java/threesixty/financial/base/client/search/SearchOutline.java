@@ -26,6 +26,6 @@ public class SearchOutline extends AbstractSearchOutline {
 
 	@Override
 	protected String getConfiguredIconId() {
-		return Icons.LineAwesome.Search;
+		return Icons.LineAwesome.SEARCH;
 	}
 }

@@ -30,6 +30,6 @@ public class OperationsOutline extends AbstractOutline {
 
 	@Override
 	protected String getConfiguredIconId() {
-		return Icons.LineAwesome.Folder;
+		return Icons.LineAwesome.FOLDER;
 	}
 }

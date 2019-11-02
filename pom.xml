@@ -15,6 +15,13 @@
 	<properties>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
+		
+		<sonar.java.coverage>jacoco</sonar.java.coverage>
+		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+		<sonar.jacoco.reportPath>${project.basedir}/target/jacoco-all.exec</sonar.jacoco.reportPath>
+		
+		<jacoco.plugin.version>0.8.5</jacoco.plugin.version>
+		<sonar.plugin.version>3.7.0.1746</sonar.plugin.version>
 	</properties>
 
 	<build>
@@ -36,6 +43,30 @@
 				<configuration>
 					<skip>true</skip>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>${sonar.plugin.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>default-prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>prepare-report</id>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

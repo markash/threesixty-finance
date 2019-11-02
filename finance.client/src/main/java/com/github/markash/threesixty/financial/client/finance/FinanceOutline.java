@@ -35,6 +35,6 @@ public class FinanceOutline extends AbstractOutline {
 
 	@Override
 	protected String getConfiguredIconId() {
-		return Icons.LineAwesome.Map;
+		return Icons.LineAwesome.MAP;
 	}
 }

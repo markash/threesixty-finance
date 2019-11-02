@@ -21,6 +21,6 @@ public class SettingsOutline extends AbstractOutline {
 
 	@Override
 	protected String getConfiguredIconId() {
-		return Icons.LineAwesome.Gears;
+		return Icons.LineAwesome.GEARS;
 	}
 }

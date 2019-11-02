@@ -35,10 +35,5 @@ public class DesktopQuickAccessMenuExtension extends AbstractMenuExtension<Quick
         protected String getConfiguredText() {
             return TEXTS.get("NewBudget");
         }
-
-        @Override
-        protected void execAction() {
-            //new EventForm().startNew();
-        }
     }
 }

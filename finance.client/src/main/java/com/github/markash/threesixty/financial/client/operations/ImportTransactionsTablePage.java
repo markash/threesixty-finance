@@ -216,7 +216,7 @@ public class ImportTransactionsTablePage extends AbstractPageWithTable<Table> {
         }
 
         protected String getConfiguredIconId() {
-            return Icons.LineAwesome.Upload;
+            return Icons.LineAwesome.UPLOAD;
         }
         
         @Override

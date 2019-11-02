@@ -23,6 +23,6 @@ public class EventOutline extends AbstractOutline {
 
     @Override
     protected String getConfiguredIconId() {
-      return Icons.LineAwesome.Calendar;
+      return Icons.LineAwesome.CALENDAR;
     }
 }

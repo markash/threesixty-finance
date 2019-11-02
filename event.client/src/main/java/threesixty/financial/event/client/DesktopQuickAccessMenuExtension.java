@@ -35,11 +35,6 @@ public class DesktopQuickAccessMenuExtension extends AbstractMenuExtension<Quick
         protected String getConfiguredText() {
             return TEXTS.get("NewMonthEnd");
         }
-
-        @Override
-        protected void execAction() {
-            //new EventForm().startNew();
-        }
     }
     
     @Order(40)
@@ -53,11 +48,6 @@ public class DesktopQuickAccessMenuExtension extends AbstractMenuExtension<Quick
         @Override
         protected String getConfiguredText() {
             return TEXTS.get("NewPaymentDate");
-        }
-
-        @Override
-        protected void execAction() {
-            //new EventForm().startNew();
         }
     }
 }

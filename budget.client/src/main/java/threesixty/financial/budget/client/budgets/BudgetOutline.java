@@ -23,6 +23,6 @@ public class BudgetOutline extends AbstractOutline {
 
     @Override
     protected String getConfiguredIconId() {
-      return Icons.LineAwesome.Money;
+      return Icons.LineAwesome.MONEY;
     }
 }

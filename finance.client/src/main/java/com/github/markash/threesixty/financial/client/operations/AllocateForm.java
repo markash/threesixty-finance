@@ -1,6 +1,7 @@
 package com.github.markash.threesixty.financial.client.operations;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 import org.eclipse.scout.rt.client.dto.FormData;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
@@ -91,10 +92,6 @@ public class AllocateForm extends AbstractForm {
       return getFieldByClass(AccountField.class);
     }
     
-//    public BalanceField getBalanceField() {
-//        return getFieldByClass(BalanceField.class);
-//    }
-    
     public CommentField getCommentField() {
         return getFieldByClass(CommentField.class);
     }
@@ -160,6 +157,7 @@ public class AllocateForm extends AbstractForm {
             @Override
             protected String getConfiguredLabel() { return TEXTS.get("AccountCode"); }
             
+            @Override
             protected java.lang.Class<? extends ILookupCall<Long>> getConfiguredLookupCall() { return AccountLookupCall.class; };
             
             @Override
@@ -204,15 +202,6 @@ public class AllocateForm extends AbstractForm {
             }
         }
 
-//        @Order(50)
-//        public class BalanceField extends AbstractBigDecimalField {
-//            @Override
-//            protected String getConfiguredLabel() { return TEXTS.get("Balance"); }
-//
-//            @Override
-//            public boolean getEnabledProperty() { return false; }
-//        }
-        
         @Order(80)
         public class SplitField extends AbstractBooleanField {
             @Override
@@ -268,7 +257,7 @@ public class AllocateForm extends AbstractForm {
                     return getColumnSet().getColumnByClass(AccountColumn.class);
                 }
 
-                protected boolean getConfiguredAutoResizeColumns() { return true; };
+                protected boolean getConfiguredAutoResizeColumns() { return true; }
                 
                 @Override
                 protected void execContentChanged() {
@@ -277,7 +266,7 @@ public class AllocateForm extends AbstractForm {
                                         .getAmountColumn()
                                         .getValues(false)
                                         .stream()
-                                        .filter(v -> v != null)
+                                        .filter(Objects::nonNull)
                                         .reduce(BigDecimal.ZERO, (i, v) -> i.add(v));
                     
                     
@@ -293,10 +282,10 @@ public class AllocateForm extends AbstractForm {
                     protected int getConfiguredWidth() { return 100; }
                     
                     @Override
-                    protected boolean getConfiguredMandatory() { return true; };
+                    protected boolean getConfiguredMandatory() { return true; }
                     
                     @Override
-                    protected boolean getConfiguredEditable() { return true; };
+                    protected boolean getConfiguredEditable() { return true; }
                     
                     @Override
                     protected java.lang.Class<? extends ILookupCall<Long>> getConfiguredLookupCall() {
@@ -313,7 +302,7 @@ public class AllocateForm extends AbstractForm {
                     protected int getConfiguredWidth() { return 100; }
                     
                     @Override
-                    protected boolean getConfiguredEditable() { return true; };
+                    protected boolean getConfiguredEditable() { return true; }
                     
                 }
 
@@ -326,7 +315,7 @@ public class AllocateForm extends AbstractForm {
                     protected int getConfiguredWidth() { return 100; }
                     
                     @Override
-                    protected boolean getConfiguredEditable() { return true; };
+                    protected boolean getConfiguredEditable() { return true; }
                 }                
             }
 
@@ -356,7 +345,8 @@ public class AllocateForm extends AbstractForm {
         
         public class AddAllocationButton extends AbstractButton {
             
-            protected String getConfiguredLabel() { return TEXTS.get("AddAllocation"); };
+            @Override
+            protected String getConfiguredLabel() { return TEXTS.get("AddAllocation"); }
             
             @Override
             protected void execClickAction() {

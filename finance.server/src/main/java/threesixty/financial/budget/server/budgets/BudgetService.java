@@ -66,7 +66,7 @@ public class BudgetService implements IBudgetService {
     
     @Override
     public void processBudgetItemChanges(
-            final List<BudgetItem> changes) throws ProcessingException {
+            final List<BudgetItem> changes) {
         
         try {
             

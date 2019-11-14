@@ -349,13 +349,6 @@ public class BudgetTablePage extends AbstractPageWithTable<Table> {
             if (parentRow != null) {
                 
                 retrieveUpdatedRow(table, parentRow);
-//                Long budgetId = (Long) parentRow.getCell(table.getBudgetIdColumn()).getValue();
-//                Long accountId = (Long) parentRow.getCell(table.getAccountCodeColumn()).getValue();
-//                
-//                BudgetItem budgetItem = BEANS.get(IBudgetService.class).retrieveBudgetItem(budgetId, accountId);
-//                
-//                parentRow.getCellForUpdate(table.getBudgetAmountColumn()).setValue(budgetItem.getBudgetAmount());
-//                parentRow.getCellForUpdate(table.getCommentColumn()).setValue(budgetItem.getComment());
             }
             
             return parentRow;

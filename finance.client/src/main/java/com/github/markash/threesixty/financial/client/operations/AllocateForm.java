@@ -158,7 +158,7 @@ public class AllocateForm extends AbstractForm {
             protected String getConfiguredLabel() { return TEXTS.get("AccountCode"); }
             
             @Override
-            protected java.lang.Class<? extends ILookupCall<Long>> getConfiguredLookupCall() { return AccountLookupCall.class; };
+            protected java.lang.Class<? extends ILookupCall<Long>> getConfiguredLookupCall() { return AccountLookupCall.class; }
             
             @Override
             protected boolean getConfiguredMandatory() { return true; }
@@ -257,6 +257,7 @@ public class AllocateForm extends AbstractForm {
                     return getColumnSet().getColumnByClass(AccountColumn.class);
                 }
 
+                @Override
                 protected boolean getConfiguredAutoResizeColumns() { return true; }
                 
                 @Override
@@ -290,7 +291,7 @@ public class AllocateForm extends AbstractForm {
                     @Override
                     protected java.lang.Class<? extends ILookupCall<Long>> getConfiguredLookupCall() {
                         return AccountLookupCall.class;
-                    };
+                    }
                 }
 
                 @Order(20)

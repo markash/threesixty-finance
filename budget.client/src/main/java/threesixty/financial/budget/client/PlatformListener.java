@@ -22,13 +22,5 @@ public class PlatformListener implements IPlatformListener{
 
       // Register UI extensions
       extensionRegistry.register(DesktopQuickAccessMenuExtension.class);
-//      extensionRegistry.register(PersonFormTabExtension.class);
-//      extensionRegistry.register(PersonTablePageExtension.class);
-//      extensionRegistry.register(EventOutlineExtension.class);
-//      extensionRegistry.register(EventPageExtension.class);
-
-      // Register DTO extensions
-//      extensionRegistry.register(PersonFormTabExtensionData.class);
-//      extensionRegistry.register(PersonTablePageDataExtension.class);
     }
 }

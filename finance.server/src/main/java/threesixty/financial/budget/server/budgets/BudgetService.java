@@ -15,11 +15,11 @@ import org.eclipse.scout.rt.server.jdbc.SQL;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 
 import com.github.markash.threesixty.financial.server.sql.SQLs;
-import com.github.markash.threesixty.financial.shared.accounts.Account;
-import com.github.markash.threesixty.financial.shared.accounts.IAccountsService;
 import com.microsoft.sqlserver.jdbc.SQLServerDataTable;
 import com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement;
 
+import threesixty.financial.base.shared.account.Account;
+import threesixty.financial.base.shared.account.IAccountsService;
 import threesixty.financial.budget.shared.budgets.BudgetItem;
 import threesixty.financial.budget.shared.budgets.BudgetTablePageData;
 import threesixty.financial.budget.shared.budgets.BudgetsTablePageData;

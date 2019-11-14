@@ -26,16 +26,15 @@ import org.eclipse.scout.rt.platform.text.TEXTS;
 import org.eclipse.scout.rt.platform.util.CollectionUtility;
 import org.eclipse.scout.rt.platform.util.StringUtility;
 
-import com.github.markash.threesixty.financial.client.finance.FinanceOutline;
-import com.github.markash.threesixty.financial.client.operations.OperationsOutline;
-import com.github.markash.threesixty.financial.shared.Icons;
 import com.github.markash.threesixty.financial.shared.operations.IImportTransactionsService;
 import com.github.markash.threesixty.financial.shared.operations.ImportTransactionLineParser;
 
 import threesixty.financial.base.client.Desktop.UserProfileMenu.ThemeMenu.DarkThemeMenu;
 import threesixty.financial.base.client.Desktop.UserProfileMenu.ThemeMenu.DefaultThemeMenu;
+import threesixty.financial.base.client.operations.OperationsOutline;
 import threesixty.financial.base.client.search.SearchOutline;
 import threesixty.financial.base.client.settings.SettingsOutline;
+import threesixty.financial.base.shared.Icons;
 
 import org.eclipse.scout.rt.platform.classid.ClassId;
 

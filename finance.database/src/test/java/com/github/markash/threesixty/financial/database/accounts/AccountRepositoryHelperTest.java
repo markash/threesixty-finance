@@ -1,11 +1,12 @@
 package com.github.markash.threesixty.financial.database.accounts;
 
 import junit.framework.TestCase;
+import threesixty.financial.base.shared.account.Account;
+import threesixty.financial.base.shared.account.MonthEndAmount;
+
 import org.junit.Assert;
 
-import com.github.markash.threesixty.financial.shared.accounts.Account;
 import com.github.markash.threesixty.financial.shared.accounts.AccountMonthEndSummary;
-import com.github.markash.threesixty.financial.shared.accounts.MonthEndAmount;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

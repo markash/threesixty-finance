@@ -1,142 +1,165 @@
 package com.github.markash.threesixty.financial.server.sql;
 
-public interface SQLs {
+public class SQLs {
 
-    public interface Account {
+    private SQLs() {}
+    
+    public static final String LINE_FEED    = System.lineSeparator();
+    public static final String SELECT       = "SELECT";
+    public static final String FROM         = LINE_FEED + "FROM";
+    public static final String WHERE        = LINE_FEED + "WHERE";
+    public static final String INTO        = LINE_FEED + "INTO";
+    
+    public static class Account {
         
-        String LOOKUP =
-              " SELECT   "
+        private Account() {} 
+        
+        public static final String LOOKUP =
+              SELECT
             + "         ACC.AccountId   "
             + "     ,   ACC.AccountName "
-            
-            + " FROM                Account     AS ACC"            
+            + FROM
+            + "     Account     AS ACC"            
             + " LEFT OUTER JOIN     Account     AS PRT"
             + "     ON  PRT.AccountId = ACC.ParentAccountId"
-            + " WHERE"
-            + "     1 = 1 "
-            + "<key>    AND ACC.AccountId = :key</key> " // <1>
-            + "<text>   AND UPPER(ACC.AccountName) LIKE UPPER(:text) </text> " // <2>
+            + WHERE
+            + "         PRT.AccountId > 0 "                                     // Only select sub-accounts
+            + "<key>    AND ACC.AccountId = :key</key> "                        // <1>
+            + "<text>   AND UPPER(ACC.AccountName) LIKE UPPER(:text) </text> "  // <2>
             + "<all></all>";
         
-        String PAGE_SELECT = 
-                " SELECT"
+        public static final String PAGE_SELECT = 
+                SELECT
               + "       AccountId"
               + "   ,   AccountName"
               + "   ,   ParentAccountId"
               + "   ,   ParentAccountName"
-              + " FROM vwAccount "
+              + FROM
+              + "   vwAccount"
               ;
 
-          String PAGE_DATA_SELECT_INTO = 
-                " INTO"
+        public static final String PAGE_DATA_SELECT_INTO = 
+                INTO
               + "       :{page.accountId}"
               + "   ,   :{page.accountName}"
               + "   ,   :{page.accountParentId}"
               + "   ,   :{page.accountParentName}"
               ;  
           
-          String SELECT_INTO_PAGE_DATA = PAGE_SELECT + PAGE_DATA_SELECT_INTO;
+        public static final String SELECT_INTO_PAGE_DATA = PAGE_SELECT + PAGE_DATA_SELECT_INTO;
           
-          String PARAM_PAGE = "page";
+        public static final String PARAM_PAGE = "page";
           
-          interface ValueObject {
-              String VALUE_OBJECT_SELECT =
-                        " SELECT"
+        public static class ValueObject {
+            
+            private ValueObject() {}
+            
+            public static final String VALUE_OBJECT_SELECT =
+                        SELECT
                       + "       AccountId"
                       + "   ,   AccountName"
                       + "   ,   ParentAccountId"
                       + "   ,   Sign"
-                      + " FROM vwAccount "
+                      + FROM
+                      + "   vwAccount "
                       ;
               
-              String SINGLE = 
+            public static final String SINGLE = 
                       "   WHERE"
                       + "         AccountId   = :{accountId}";
               
-              String INTO = 
-                      "   INTO    :{valueObject.id}"
+            public static final String INTO_OBJECT = 
+                      INTO
+                      + "       :{valueObject.id}"
                       + "     ,   :{valueObject.name}"
                       + "     ,   :{valueObject.parentId}"
                       + "     ,   :{valueObject.sign}";
               
-              String SELECT_SINGLE_INTO_VALUE_OBJECT = VALUE_OBJECT_SELECT + SINGLE + INTO;
+            public static final String SELECT_SINGLE_INTO_VALUE_OBJECT = VALUE_OBJECT_SELECT + SINGLE + INTO_OBJECT;
               
-              String SELECT_ALL_INTO_VALUE_OBJECT = VALUE_OBJECT_SELECT + INTO;
-          }
+            public static final String SELECT_ALL_INTO_VALUE_OBJECT = VALUE_OBJECT_SELECT + INTO_OBJECT;
+        }
           
-          String PROC_SUB_ACCOUNT_NEW = "{call dbo.prSubAccountNew(:accountParentId, :accountName)}";
+        public static final String PROC_SUB_ACCOUNT_NEW = "{call dbo.prSubAccountNew(:accountParentId, :accountName)}";
           
-          String PROC_SUB_ACCOUNT_NEW_INTP_PAGE_DATA = PROC_SUB_ACCOUNT_NEW + PAGE_DATA_SELECT_INTO;
+        public static final String PROC_SUB_ACCOUNT_NEW_INTP_PAGE_DATA = PROC_SUB_ACCOUNT_NEW + PAGE_DATA_SELECT_INTO;
     }
     
-    public interface TransactionHistory {
+    public static class TransactionHistory {
         
-        String IMPORT = "{call dbo.prTransactionHistoryImport(?)}";
+        private TransactionHistory() {}
         
-        String DELETE_DUPLICATES = "{call dbo.prTransactionHistoryDeleteDuplicates()}";
+        public static final String IMPORT = "{call dbo.prTransactionHistoryImport(?)}";
         
-        String AUTO_ALLOCATE = "{call dbo.prTransactionHistoryAutoAllocate()}";
+        public static final String DELETE_DUPLICATES = "{call dbo.prTransactionHistoryDeleteDuplicates()}";
         
-        String MANUAL_ALLOCATE = "{call dbo.prTransactionHistoryManualAllocate (?, ?)}";
+        public static final String AUTO_ALLOCATE = "{call dbo.prTransactionHistoryAutoAllocate()}";
         
-        //String SELECT = "SELECT * FROM TransactionHistory";
+        public static final String MANUAL_ALLOCATE = "{call dbo.prTransactionHistoryManualAllocate (?, ?)}";
         
-        String FULL_TEXT_UPDATE = "ALTER FULLTEXT INDEX ON TransactionHistory START FULL POPULATION";
+        public static final String FULL_TEXT_UPDATE = "ALTER FULLTEXT INDEX ON TransactionHistory START FULL POPULATION";
         
-        String DELETE = "DELETE FROM TransactionHistory";
+        public static final String DELETE = "DELETE FROM TransactionHistory";
         
-        String PAGE_SELECT = 
-                  "SELECT"
+        public static final String PAGE_SELECT = 
+                  SELECT
                 + "         TransactionId "
                 + "     ,   Date "
                 + "     ,   Description "
                 + "     ,   Amount "
                 + "     ,   Balance "
-                + "FROM     TransactionHistory ";
+                + FROM
+                + "         TransactionHistory ";
 
-            String PAGE_DATA_SELECT_INTO = 
-                  "INTO     :{page.transactionId}, "
+        public static final String PAGE_DATA_SELECT_INTO = 
+                  INTO
+                + "         :{page.transactionId}, "
                 + "         :{page.date}, "
                 + "         :{page.description}, "
                 + "         :{page.amount}, "
                 + "         :{page.balance}";  
             
-            String SELECT_INTO_PAGE_DATA = PAGE_SELECT + PAGE_DATA_SELECT_INTO;
+        public static final String SELECT_INTO_PAGE_DATA = PAGE_SELECT + PAGE_DATA_SELECT_INTO;
     }
     
-    interface Budget {
+    public static class Budget {
         
-        String PARAM_PAGE = "page";
+        private Budget() {}
         
-        String PARAM_BUDGET_ID = "budgetId";
+        public static final String PARAM_PAGE = "page";
         
-        String PAGE_SELECT =
-                "SELECT "
-                + "         BudgetId "
-                + "     ,   MonthEndId "
-                + "     ,   MonthEndDate "
+        public static final String PARAM_BUDGET_ID = "budgetId";
+        
+        public static final String PAGE_SELECT =
+                SELECT
+                + "         BudgetId"
+                + "     ,   MonthEndId"
+                + "     ,   MonthEndDate"
                 + "     ,   ProcessedDateTime"
-                + " FROM"
+                + FROM
                 + "         vwBudget";
         
         
-        String INTO = 
-                "   INTO    :{page.budgetId}"
+        public static final String INTO_OBJECT = 
+                INTO
+                + "         :{page.budgetId}"
                 + "     ,   :{page.monthEndId}"
                 + "     ,   :{page.monthEndDate}"
                 + "     ,   :{page.processedDateTime}";
         
-        String SELECT_INTO_PAGE = PAGE_SELECT + INTO;
+        public static final String SELECT_INTO_PAGE = PAGE_SELECT + INTO_OBJECT;
         
-        String MATERIALIZE_NEW_BUDGET = "{call dbo.prBudgetMaterializeNew(:budgetId) }";
+        public static final String MATERIALIZE_NEW_BUDGET = "{call dbo.prBudgetMaterializeNew(:budgetId) }";
     }
     
-    interface BudgetItem {
+    public static class BudgetItem {
         
-        String PARAM_PAGE = "page";
+        private BudgetItem() {}
         
-        String PAGE_SELECT =
-                "SELECT "
+        public static final String PARAM_PAGE = "page";
+        
+        public static final String PAGE_SELECT =
+                SELECT
                 + "         BudgetId "
                 + "     ,   MonthEndDate "
                 + "     ,   AccountId "
@@ -148,15 +171,16 @@ public interface SQLs {
                 + "     ,   DifferenceAmount"
                 + "     ,   Comment"
                 + "     ,   ProcessedDateTime"
-                + " FROM"
+                + FROM
                 + "         vwBudgetItem";
         
-        String SINGLE_BY_BUDGET_ID =
-                " WHERE   "
+        public static final String SINGLE_BY_BUDGET_ID =
+                WHERE
                 + "         BudgetId    =   :budgetId";
         
-        String INTO = 
-                "   INTO    :{page.budgetId}"
+        public static final String INTO_OBJECT = 
+                INTO
+                + "         :{page.budgetId}"
                 + "     ,   :{page.monthEndDate}"
                 + "     ,   :{page.accountCode}"
                 + "     ,   :{page.accountName}"
@@ -168,37 +192,41 @@ public interface SQLs {
                 + "     ,   :{page.comment}"
                 + "     ,   :{page.processedDateTime}";
         
-        String SELECT_SINGLE_BY_BUDGET_ID_INTO_PAGE = PAGE_SELECT + SINGLE_BY_BUDGET_ID + INTO;
+        public static final String SELECT_SINGLE_BY_BUDGET_ID_INTO_PAGE = PAGE_SELECT + SINGLE_BY_BUDGET_ID + INTO_OBJECT;
         
-        interface ValueObject {
-            String VALUE_OBJECT_SELECT =
-                    "SELECT "
+        public static class ValueObject {
+            
+            private ValueObject() {}
+            
+            public static final String VALUE_OBJECT_SELECT =
+                    SELECT
                     + "         BudgetId "
                     + "     ,   AccountId "
                     + "     ,   BudgetAmount"
                     + "     ,   LedgerAmount"
                     + "     ,   DifferenceAmount"
                     + "     ,   Comment"
-                    + " FROM"
+                    + FROM
                     + "         vwBudgetItem"
                     ;
             
-            String SINGLE = 
-                    "   WHERE"
+            public static final String SINGLE = 
+                    WHERE
                     + "         BudgetId    = :{budgetId}"
                     + "     AND AccountId   = :{accountId}";
             
-            String INTO = 
-                    "   INTO    :{valueObject.budgetId}"
+            public static final String INTO_OBJECT = 
+                    INTO
+                    + "         :{valueObject.budgetId}"
                     + "     ,   :{valueObject.accountId}"
                     + "     ,   :{valueObject.budgetAmount}"
                     + "     ,   :{valueObject.ledgerAmount}"
                     + "     ,   :{valueObject.differenceAmount}"
                     + "     ,   :{valueObject.comment}";
             
-            String SELECT_SINGLE_INTO_VALUE_OBJECT = VALUE_OBJECT_SELECT + SINGLE + INTO;
+            public static final String SELECT_SINGLE_INTO_VALUE_OBJECT = VALUE_OBJECT_SELECT + SINGLE + INTO_OBJECT;
         }
         
-        String BUDGET_ITEM_PROCESS = "{call dbo.prBudgetItemProcess (?)}";
+        public static final String BUDGET_ITEM_PROCESS = "{call dbo.prBudgetItemProcess (?)}";
     }
 }

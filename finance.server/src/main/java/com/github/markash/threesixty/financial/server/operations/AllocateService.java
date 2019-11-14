@@ -10,7 +10,6 @@ import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.exception.VetoException;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 
-import com.github.markash.threesixty.financial.shared.database.DatabaseException;
 import com.github.markash.threesixty.financial.shared.operations.AllocateFormData;
 import com.github.markash.threesixty.financial.shared.operations.AllocateFormData.AllocationTable.AllocationTableRowData;
 import com.github.markash.threesixty.financial.shared.operations.Allocation;
@@ -19,6 +18,8 @@ import com.github.markash.threesixty.financial.shared.operations.IImportTransact
 import com.github.markash.threesixty.financial.shared.operations.ReadAllocatePermission;
 import com.github.markash.threesixty.financial.shared.operations.UpdateAllocatePermission;
 import com.github.markash.threesixty.financial.shared.text.TextService;
+
+import threesixty.financial.base.shared.exception.DatabaseException;
 
 public class AllocateService implements IAllocateService {
 

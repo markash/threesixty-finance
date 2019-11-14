@@ -6,7 +6,7 @@ import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractOutline;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.platform.text.TEXTS;
 
-import com.github.markash.threesixty.financial.shared.Icons;
+import threesixty.financial.base.shared.Icons;
 
 public class BudgetOutline extends AbstractOutline {
 

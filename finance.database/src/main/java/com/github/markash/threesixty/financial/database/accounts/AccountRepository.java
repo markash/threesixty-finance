@@ -22,8 +22,9 @@ import org.eclipse.scout.rt.server.jdbc.SqlBind;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.markash.threesixty.financial.shared.accounts.Account;
 import com.github.markash.threesixty.financial.shared.accounts.AccountMonthEndSummary;
+
+import threesixty.financial.base.shared.account.Account;
 
 public class AccountRepository implements IAccountRepository, IService {
 	private Logger log = LoggerFactory.getLogger(getClass());

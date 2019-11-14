@@ -13,7 +13,8 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 
 import com.github.markash.threesixty.financial.shared.accounts.AccountFormData;
-import com.github.markash.threesixty.financial.shared.accounts.IAccountsService;
+
+import threesixty.financial.base.shared.account.IAccountsService;
 
 @RunWithSubject("anonymous")
 @RunWith(ClientTestRunner.class)

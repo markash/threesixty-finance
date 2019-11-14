@@ -7,7 +7,7 @@ import org.eclipse.scout.rt.shared.services.lookup.ILookupRow;
 import org.eclipse.scout.rt.shared.services.lookup.LocalLookupCall;
 import org.eclipse.scout.rt.shared.services.lookup.LookupRow;
 
-import com.github.markash.threesixty.financial.shared.accounts.AccountsTablePageData.AccountsTableRowData;
+import com.github.markash.threesixty.financial.shared.accounts.AccountTablePageData.AccountTableRowData;
 
 public class AccountLookupCall extends LocalLookupCall<Long> {
     
@@ -29,7 +29,7 @@ public class AccountLookupCall extends LocalLookupCall<Long> {
             final Long accountParentId, 
             final String accountParentName) {
       
-      AccountsTableRowData data = new AccountsTableRowData();
+      AccountTableRowData data = new AccountTableRowData();
       data.setAccountId(accountId);
       data.setAccountParentId(accountParentId);
       data.setAccountName(accountName);

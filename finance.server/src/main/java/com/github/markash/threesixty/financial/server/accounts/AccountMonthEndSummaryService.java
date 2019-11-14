@@ -1,10 +1,11 @@
 package com.github.markash.threesixty.financial.server.accounts;
 
 import com.github.markash.threesixty.financial.database.accounts.IAccountRepository;
-import com.github.markash.threesixty.financial.shared.accounts.AccountMonthEndSummaryTableDataConverter;
 import com.github.markash.threesixty.financial.shared.accounts.AccountMonthEndSummaryTablePageData;
 import com.github.markash.threesixty.financial.shared.accounts.AccountMonthEndSummaryTablePageData.AccountMonthEndSummaryTableRowData;
-import com.github.markash.threesixty.financial.shared.accounts.IAccountMonthEndSummaryService;
+
+import threesixty.financial.base.shared.account.AccountMonthEndSummaryTableDataConverter;
+import threesixty.financial.base.shared.account.IAccountMonthEndSummaryService;
 
 import java.time.LocalDate;
 

@@ -2,10 +2,11 @@ package com.github.markash.threesixty.financial.server;
 
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.IPlatform.State;
+
+import threesixty.financial.base.shared.database.IDatabaseMigrationService;
+
 import org.eclipse.scout.rt.platform.IPlatformListener;
 import org.eclipse.scout.rt.platform.PlatformEvent;
-
-import com.github.markash.threesixty.financial.shared.database.IDatabaseMigrationService;
 
 public class ServerPlatformListener implements IPlatformListener {
 

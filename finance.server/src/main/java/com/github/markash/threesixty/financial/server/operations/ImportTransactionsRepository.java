@@ -13,12 +13,13 @@ import org.eclipse.scout.rt.server.jdbc.ISqlService;
 import org.eclipse.scout.rt.server.jdbc.SQL;
 
 import com.github.markash.threesixty.financial.server.sql.SQLs;
-import com.github.markash.threesixty.financial.shared.database.DatabaseException;
 import com.github.markash.threesixty.financial.shared.operations.Allocation;
 import com.github.markash.threesixty.financial.shared.operations.IImportTransactionsRepository;
 import com.github.markash.threesixty.financial.shared.operations.ImportTransactionLine;
 import com.microsoft.sqlserver.jdbc.SQLServerDataTable;
 import com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement;
+
+import threesixty.financial.base.shared.exception.DatabaseException;
 
 public class ImportTransactionsRepository implements IImportTransactionsRepository {
 

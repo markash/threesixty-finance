@@ -7,7 +7,10 @@ import java.util.Date;
 
 public class DateUtils {
 
-	public static java.util.Date convertToDate(final LocalDate dateToConvert) {
+    private DateUtils() {}
+    
+	public static java.util.Date convertToDate(
+	        final LocalDate dateToConvert) {
 	
 		if (dateToConvert == null) {
 			return null;

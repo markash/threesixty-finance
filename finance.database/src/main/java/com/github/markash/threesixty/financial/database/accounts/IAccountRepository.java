@@ -5,8 +5,9 @@ import java.util.List;
 
 import org.eclipse.scout.rt.platform.ApplicationScoped;
 
-import com.github.markash.threesixty.financial.shared.accounts.Account;
 import com.github.markash.threesixty.financial.shared.accounts.AccountMonthEndSummary;
+
+import threesixty.financial.base.shared.account.Account;
 
 @ApplicationScoped
 public interface IAccountRepository {

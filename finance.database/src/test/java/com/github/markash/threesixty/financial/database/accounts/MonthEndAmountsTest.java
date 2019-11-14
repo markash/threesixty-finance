@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import junit.framework.TestCase;
+import threesixty.financial.base.shared.account.MonthEndAmount;
+import threesixty.financial.base.shared.account.MonthEndAmounts;
+
 import org.jooq.lambda.Seq;
 import org.jooq.lambda.tuple.Tuple2;
 import org.junit.Assert;
-
-import com.github.markash.threesixty.financial.shared.accounts.MonthEndAmount;
-import com.github.markash.threesixty.financial.shared.accounts.MonthEndAmounts;
 
 public class MonthEndAmountsTest extends TestCase {
 

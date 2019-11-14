@@ -17,8 +17,7 @@ import org.eclipse.scout.rt.platform.Order;
 import org.eclipse.scout.rt.platform.text.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 
-import com.github.markash.threesixty.financial.shared.Icons;
-
+import threesixty.financial.base.shared.Icons;
 import threesixty.financial.budget.client.budgets.BudgetTablePage.Table;
 import threesixty.financial.budget.client.common.AbstractBudgetDateColumn;
 import threesixty.financial.budget.client.common.AbstractBudgetMoneyColumn;

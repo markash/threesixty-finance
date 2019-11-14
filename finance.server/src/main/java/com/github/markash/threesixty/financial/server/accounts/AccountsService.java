@@ -13,22 +13,24 @@ import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 
 import com.github.markash.threesixty.financial.server.sql.SQLs;
-import com.github.markash.threesixty.financial.shared.accounts.Account;
 import com.github.markash.threesixty.financial.shared.accounts.AccountFormData;
-import com.github.markash.threesixty.financial.shared.accounts.AccountsTablePageData;
-import com.github.markash.threesixty.financial.shared.accounts.AccountsTablePageData.AccountsTableRowData;
-import com.github.markash.threesixty.financial.shared.accounts.CreateAccountPermission;
-import com.github.markash.threesixty.financial.shared.accounts.IAccountsService;
-import com.github.markash.threesixty.financial.shared.accounts.ReadAccountPermission;
-import com.github.markash.threesixty.financial.shared.accounts.UpdateAccountPermission;
+import com.github.markash.threesixty.financial.shared.accounts.AccountTablePageData;
+import com.github.markash.threesixty.financial.shared.accounts.AccountTablePageData.AccountTableRowData;
+
+import threesixty.financial.base.shared.account.Account;
+import threesixty.financial.base.shared.account.CreateAccountPermission;
+import threesixty.financial.base.shared.account.IAccountsService;
+import threesixty.financial.base.shared.account.ReadAccountPermission;
+import threesixty.financial.base.shared.account.UpdateAccountPermission;
+import threesixty.financial.base.shared.exception.AuthorizationFailedException;
 
 public class AccountsService implements IAccountsService {
 
 	
 	@Override
-	public AccountsTablePageData getAccountsTableData(SearchFilter filter) {
+	public AccountTablePageData getAccountsTableData(SearchFilter filter) {
 		
-		AccountsTablePageData pageData = new AccountsTablePageData();
+		AccountTablePageData pageData = new AccountTablePageData();
 				
 		SQL.selectInto(
 		        SQLs.Account.SELECT_INTO_PAGE_DATA, 
@@ -79,11 +81,13 @@ public class AccountsService implements IAccountsService {
     }
     
     @Override
-    public AccountFormData prepareCreate(AccountFormData formData) {
+    public AccountFormData prepareCreate(
+            final AccountFormData formData) {
+        
         if (!ACCESS.check(new CreateAccountPermission())) {
-            throw new VetoException(TEXTS.get("AuthorizationFailed"));
+            throw new AuthorizationFailedException();
         }
-        // TODO [mpash] add business logic here.
+        
         return formData;
     }
 
@@ -92,10 +96,10 @@ public class AccountsService implements IAccountsService {
             final AccountFormData formData) {
         
         if (!ACCESS.check(new CreateAccountPermission())) {
-            throw new VetoException(TEXTS.get("AuthorizationFailed"));
+            throw new AuthorizationFailedException();
         }
         
-        AccountsTablePageData pageData = new AccountsTablePageData();
+        AccountTablePageData pageData = new AccountTablePageData();
         
         SQL.select(
                 SQLs.Account.PROC_SUB_ACCOUNT_NEW_INTP_PAGE_DATA, 
@@ -106,7 +110,7 @@ public class AccountsService implements IAccountsService {
 
         if (pageData.getRowCount() > 0) {
         
-            AccountsTableRowData row = pageData.rowAt(0);
+            AccountTableRowData row = pageData.rowAt(0);
             formData.getAccountId().setValue(row.getAccountId());
         }
         
@@ -114,9 +118,11 @@ public class AccountsService implements IAccountsService {
     }
 
     @Override
-    public AccountFormData load(AccountFormData formData) {
+    public AccountFormData load(
+            final AccountFormData formData) {
+        
         if (!ACCESS.check(new ReadAccountPermission())) {
-            throw new VetoException(TEXTS.get("AuthorizationFailed"));
+            throw new AuthorizationFailedException();
         }
 
         return formData;
@@ -130,7 +136,7 @@ public class AccountsService implements IAccountsService {
             throw new VetoException(TEXTS.get("AuthorizationFailed"));
         }
         
-        AccountsTablePageData pageData = new AccountsTablePageData();
+        AccountTablePageData pageData = new AccountTablePageData();
         
         SQL.select(
                 SQLs.Account.PROC_SUB_ACCOUNT_NEW_INTP_PAGE_DATA, 
@@ -141,7 +147,7 @@ public class AccountsService implements IAccountsService {
 
         if (pageData.getRowCount() > 0) {
         
-            AccountsTableRowData row = pageData.rowAt(0);
+            AccountTableRowData row = pageData.rowAt(0);
             formData.getAccountId().setValue(row.getAccountId());
         }
         

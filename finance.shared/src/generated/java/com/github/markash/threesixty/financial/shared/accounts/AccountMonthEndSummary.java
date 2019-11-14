@@ -5,6 +5,10 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.*;
 
+import threesixty.financial.base.shared.account.Account;
+import threesixty.financial.base.shared.account.MonthEndAmount;
+import threesixty.financial.base.shared.account.MonthEndAmounts;
+
 public class AccountMonthEndSummary implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

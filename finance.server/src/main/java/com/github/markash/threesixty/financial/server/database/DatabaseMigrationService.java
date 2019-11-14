@@ -9,8 +9,8 @@ import org.flywaydb.core.api.FlywayException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.markash.threesixty.financial.shared.database.DatabaseMigrationConfigProperties;
-import com.github.markash.threesixty.financial.shared.database.IDatabaseMigrationService;
+import threesixty.financial.base.shared.database.DatabaseMigrationConfigProperties;
+import threesixty.financial.base.shared.database.IDatabaseMigrationService;
 
 /**
  * Migrate the database using Flyway

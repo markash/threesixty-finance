@@ -4,7 +4,7 @@ import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractOutline;
 import org.eclipse.scout.rt.platform.Order;
 import org.eclipse.scout.rt.platform.text.TEXTS;
 
-import com.github.markash.threesixty.financial.shared.Icons;
+import threesixty.financial.base.shared.Icons;
 
 /**
  * 

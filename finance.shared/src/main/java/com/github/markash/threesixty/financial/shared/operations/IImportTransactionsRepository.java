@@ -6,7 +6,7 @@ import org.eclipse.scout.rt.platform.Bean;
 import org.eclipse.scout.rt.platform.service.IService;
 import org.eclipse.scout.rt.shared.TunnelToServer;
 
-import com.github.markash.threesixty.financial.shared.database.DatabaseException;
+import threesixty.financial.base.shared.exception.DatabaseException;
 
 /**
  * 

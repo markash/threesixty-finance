@@ -4,8 +4,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
 
-import com.github.markash.threesixty.financial.shared.accounts.Account;
 import com.github.markash.threesixty.financial.shared.accounts.AccountMonthEndSummary;
+
+import threesixty.financial.base.shared.account.Account;
 
 public interface IAccountRepositoryHelper {
 	/**

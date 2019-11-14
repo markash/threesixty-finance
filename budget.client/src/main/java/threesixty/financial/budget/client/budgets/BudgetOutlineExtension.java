@@ -2,7 +2,7 @@ package threesixty.financial.budget.client.budgets;
 
 import org.eclipse.scout.rt.client.extension.ui.desktop.outline.AbstractOutlineExtension;
 
-import com.github.markash.threesixty.financial.client.operations.OperationsOutline;
+import threesixty.financial.base.client.operations.OperationsOutline;
 
 public class BudgetOutlineExtension extends AbstractOutlineExtension<OperationsOutline> {
 

@@ -15,15 +15,15 @@ import org.eclipse.scout.rt.platform.text.TEXTS;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 
 import com.github.markash.threesixty.financial.shared.accounts.AccountFormData;
-import com.github.markash.threesixty.financial.shared.accounts.AccountLookupCall;
-import com.github.markash.threesixty.financial.shared.accounts.CreateAccountPermission;
-import com.github.markash.threesixty.financial.shared.accounts.IAccountsService;
-import com.github.markash.threesixty.financial.shared.accounts.UpdateAccountPermission;
 
 import threesixty.financial.base.client.account.AccountForm.MainBox.AccountIdField;
 import threesixty.financial.base.client.account.AccountForm.MainBox.CancelButton;
 import threesixty.financial.base.client.account.AccountForm.MainBox.OkButton;
 import threesixty.financial.base.client.account.AccountForm.MainBox.ParentAccountField;
+import threesixty.financial.base.shared.account.AccountLookupCall;
+import threesixty.financial.base.shared.account.CreateAccountPermission;
+import threesixty.financial.base.shared.account.IAccountsService;
+import threesixty.financial.base.shared.account.UpdateAccountPermission;
 import threesixty.financial.base.client.account.AccountForm.MainBox.AccountNameField;
 
 @FormData(value = AccountFormData.class, sdkCommand = FormData.SdkCommand.CREATE)
@@ -69,12 +69,18 @@ public class AccountForm extends AbstractForm {
     @Order(1000)
     public class MainBox extends AbstractGroupBox {
 
+        @Override
+        protected int getConfiguredGridColumnCount() {
+            return 1;
+        }
+        
         @Order(40)
         public class ParentAccountField extends AbstractSmartField<Long> {
             @Override
             protected String getConfiguredLabel() { return TEXTS.get("ParentAccountCode"); }
             
-            protected java.lang.Class<? extends ILookupCall<Long>> getConfiguredLookupCall() { return AccountLookupCall.class; };
+            @Override
+            protected java.lang.Class<? extends ILookupCall<Long>> getConfiguredLookupCall() { return AccountLookupCall.class; }
             
             @Override
             protected boolean getConfiguredMandatory() { return true; }

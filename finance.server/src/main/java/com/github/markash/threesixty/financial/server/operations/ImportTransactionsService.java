@@ -8,7 +8,6 @@ import org.eclipse.scout.rt.server.jdbc.SQL;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 
 import com.github.markash.threesixty.financial.server.sql.SQLs;
-import com.github.markash.threesixty.financial.shared.database.DatabaseException;
 import com.github.markash.threesixty.financial.shared.operations.Allocation;
 import com.github.markash.threesixty.financial.shared.operations.IImportTransactionsRepository;
 import com.github.markash.threesixty.financial.shared.operations.IImportTransactionsService;
@@ -16,6 +15,8 @@ import com.github.markash.threesixty.financial.shared.operations.ImportResult;
 import com.github.markash.threesixty.financial.shared.operations.ImportTransactionLine;
 import com.github.markash.threesixty.financial.shared.operations.ImportTransactionsException;
 import com.github.markash.threesixty.financial.shared.operations.ImportTransactionsTablePageData;
+
+import threesixty.financial.base.shared.exception.DatabaseException;
 
 public class ImportTransactionsService implements IImportTransactionsService {
 

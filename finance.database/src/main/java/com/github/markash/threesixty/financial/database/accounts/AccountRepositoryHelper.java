@@ -7,9 +7,10 @@ import java.util.Map;
 
 import org.eclipse.scout.rt.platform.Bean;
 
-import com.github.markash.threesixty.financial.shared.accounts.Account;
 import com.github.markash.threesixty.financial.shared.accounts.AccountMonthEndSummary;
-import com.github.markash.threesixty.financial.shared.accounts.MonthEndAmount;
+
+import threesixty.financial.base.shared.account.Account;
+import threesixty.financial.base.shared.account.MonthEndAmount;
 
 @Bean
 public class AccountRepositoryHelper implements IAccountRepositoryHelper {

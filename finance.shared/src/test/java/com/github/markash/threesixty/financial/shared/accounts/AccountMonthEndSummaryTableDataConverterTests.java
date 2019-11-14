@@ -9,6 +9,10 @@ import org.junit.Test;
 import com.github.markash.threesixty.financial.shared.accounts.AccountMonthEndSummaryTablePageData.AccountMonthEndSummaryTableRowData;
 import com.github.markash.threesixty.financial.shared.date.DateUtils;
 
+import threesixty.financial.base.shared.account.Account;
+import threesixty.financial.base.shared.account.AccountMonthEndSummaryTableDataConverter;
+import threesixty.financial.base.shared.account.MonthEndAmount;
+
 public class AccountMonthEndSummaryTableDataConverterTests {
 
 	@Test
